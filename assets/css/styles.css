@@ -1,0 +1,63 @@
+body {
+  color: white;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-bottom-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.items {
+  margin-right: 10px;
+}
+.current-weather {
+  align-items: center;
+  margin-top: 2rem;
+}
+.current-box {
+  width: 60rem;
+  height: 20rem;
+
+  margin-top: 1rem;
+  margin-left: 10rem;
+  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f43aedac-1e09-4768-a9ac-a99e6f53b60e/d3f3v5q-63d37cb5-9a06-4bfe-abeb-bc5ff1cb80b5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0M2FlZGFjLTFlMDktNDc2OC1hOWFjLWE5OWU2ZjUzYjYwZVwvZDNmM3Y1cS02M2QzN2NiNS05YTA2LTRiZmUtYWJlYi1iYzVmZjFjYjgwYjUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xw4YlvhpAFCuknoZeipJDzYj5HW6Njt6mdza-zULVHY);
+}
+.current-box2 {
+  width: 20rem;
+  height: 10rem;
+
+  border-width: 1px;
+  border-radius: 10px;
+
+  margin-right: 2rem;
+  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f43aedac-1e09-4768-a9ac-a99e6f53b60e/d3f3v5q-63d37cb5-9a06-4bfe-abeb-bc5ff1cb80b5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0M2FlZGFjLTFlMDktNDc2OC1hOWFjLWE5OWU2ZjUzYjYwZVwvZDNmM3Y1cS02M2QzN2NiNS05YTA2LTRiZmUtYWJlYi1iYzVmZjFjYjgwYjUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xw4YlvhpAFCuknoZeipJDzYj5HW6Njt6mdza-zULVHY);
+}
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.input {
+  height: 3rem;
+  width: 17rem;
+}
+.main {
+  background-image: url(https://wallpaperaccess.com/full/3637345.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
