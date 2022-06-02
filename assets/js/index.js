@@ -96,7 +96,18 @@ const renderCurrentWeather = (currentsWeatherData) => {
   </div>`);
 };
 const renderForecastWeather = (forecastWeatherData) => {
-  // render the forecast weather data and append each card to section
+  const container = document.getElementById("forecast-container");
+
+  $("#forecast-container").append(` <div class="current-box2">
+<div class="title">
+  <div><img src="..." class="icon card-img-top" alt="icon" /></div>
+  <div><h5>name</h5></div>
+  <div><h5>date</h5></div>
+</div>
+<h5>20c</h5>
+
+
+</div>`);
 };
 const renderForecastWeatherData = (lat, lon) => {
   // get the lat and lon from current weather data API response
@@ -124,9 +135,8 @@ const renderForecastWeatherData = (lat, lon) => {
           humidity,
         ];
 
-        console.log(forecastWeatherData);
+        renderForecastWeather(forecastWeatherData);
       }
-      // renderForecastWeather(forecastWeatherData);
     });
 };
 
