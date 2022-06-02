@@ -79,7 +79,7 @@ const renderCurrentWeather = (currentsWeatherData) => {
       <div><h2>${name}</h2></div>
       <div><h2>${date}</h2></div>
     </div>
-    <h1>${temperature}°C</h1>
+    <h1>${temperature} °C</h1>
 
     <div class="flex-column">
       <div class="card-bottom-details">
@@ -88,11 +88,6 @@ const renderCurrentWeather = (currentsWeatherData) => {
         <h4 class="items">uvindex</h4>
       </div>
 
-      <div class="card-bottom-details">
-        <h5 class="items">windspeed</h5>
-        <h5 class="items">humidity</h5>
-        <h5 class="items">uvindex</h5>
-      </div>
       
    </div>
   </div>`);
@@ -140,6 +135,24 @@ const renderForecastWeatherData = (lat, lon) => {
 };
 
 const handleFormSubmit = (event) => {
+  const container = document.getElementById("all-weather");
+  container.remove();
+  const main = document.getElementById("main");
+  $("main").append(`   <section id="all-weather"class="all-weather">
+  <div id="current-weather" class="current-weather">
+  
+  
+  
+</div>
+<h1>5 day weather forecast</h1>
+<div id="forecast-container" class="forecast-container" >
+  
+        
+ 
+
+ 
+</div>
+</section>`);
   event.preventDefault();
   // get the city name from input
   let input = document.getElementById("input-text").value;
