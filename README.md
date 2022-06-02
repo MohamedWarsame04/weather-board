@@ -8,8 +8,8 @@ Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) 
 
 # Deployed Link For This Project
 
-[GitHub](https://github.com/MohamedWarsame04/weather-board)
-[Live](https://mohamedwarsame04.github.io/weather-board/)
+- [GitHub](https://github.com/MohamedWarsame04/weather-board)
+- [Live](https://mohamedwarsame04.github.io/weather-board/)
 
 # The User Journey
 
