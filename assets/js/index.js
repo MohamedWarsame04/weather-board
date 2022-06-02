@@ -9,7 +9,7 @@ const renderCities = () => {
 
 const renderCurrentWeatherData = (input) => {
   // render the current weather data and append to section
-  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${API_KEY}`;
+  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${API_KEY}`;
   console.log(weatherUrl);
   let data = [];
   fetch(weatherUrl)
@@ -19,7 +19,9 @@ const renderCurrentWeatherData = (input) => {
     .then(function (result) {
       data = result;
 
-      let icon = data.weather[0].icon;
+      let iconId = data.weather[0].icon;
+      let icon = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
+      console.log(icon);
       let name = data.name;
       let windspeed = data.wind.speed;
       let temperature = data.main.temp;
@@ -73,11 +75,11 @@ const renderCurrentWeather = (currentsWeatherData) => {
   $("#current-weather").append(`<h1>current weather</h1>
   <div class="current-box">
     <div class="title">
-      <div><img src="http://openweathermap.org/img/wn/${icon}@2x.png" class="icon card-img-top" alt="icon" /></div>
+      <div><img src=${icon} class="icon card-img-top" alt="icon" /></div>
       <div><h2>${name}</h2></div>
       <div><h2>${date}</h2></div>
     </div>
-    <h1>${temperature}</h1>
+    <h1>${temperature}°C</h1>
 
     <div class="flex-column">
       <div class="card-bottom-details">
@@ -95,20 +97,7 @@ const renderCurrentWeather = (currentsWeatherData) => {
    </div>
   </div>`);
 };
-const renderForecastWeather = (forecastWeatherData) => {
-  const container = document.getElementById("forecast-container");
 
-  $("#forecast-container").append(` <div class="current-box2">
-<div class="title">
-  <div><img src="..." class="icon card-img-top" alt="icon" /></div>
-  <div><h5>name</h5></div>
-  <div><h5>date</h5></div>
-</div>
-<h5>20c</h5>
-
-
-</div>`);
-};
 const renderForecastWeatherData = (lat, lon) => {
   // get the lat and lon from current weather data API response
   const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
@@ -120,6 +109,7 @@ const renderForecastWeatherData = (lat, lon) => {
     })
     .then(function (result) {
       data = result;
+      const container = document.getElementById("forecast-container");
       for (i = 0; i < 5; i++) {
         let icon = data.daily[i].weather[0].icon;
         let windspeed = data.daily[i].wind_speed;
@@ -135,7 +125,16 @@ const renderForecastWeatherData = (lat, lon) => {
           humidity,
         ];
 
-        renderForecastWeather(forecastWeatherData);
+        $("#forecast-container").append(` <div class="current-box2">
+      <div class="title">
+        <div><img src="http://openweathermap.org/img/wn/${icon}@2x.png" class="icon card-img-top" alt="icon" /></div>
+        <div><h5>${name}</h5></div>
+        <div><h5>${date}</h5></div>
+      </div>
+      <h5>${temperature}°C</h5>
+      
+      
+      </div>`);
       }
     });
 };
