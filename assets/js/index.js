@@ -2,7 +2,23 @@ const API_KEY = "828bdb5d8b914d7b50a0814fe1dffb2d";
 const form = document.getElementById("form");
 const renderCities = () => {
   // get recent cities from LS []
+  const container = document.getElementById("list");
+  container.remove();
+  const searchContainer = document.getElementById("search-container");
+  $("#search-container").append(` <div id="list" class="row">
+  <h2 class="col">recent city</h2>
+  </div>`);
+  const recentCities = JSON.parse(localStorage.getItem("recentSearch"));
   // if [] is empty then render alert
+  if (recentCities !== null) {
+    for (i = 0; i < recentCities.length; i++) {
+      let cities = recentCities[i];
+      $("#list").append(
+        `<a class="recent col" data-value="${cities}" id="${i}" href="">${cities}</a>`
+      );
+      $(`#${i}`).click(handleRecentSearch);
+    }
+  }
   // else render all recent cities
   // add an event listener on div containing all cities
 };
@@ -157,17 +173,66 @@ const handleFormSubmit = (event) => {
   // get the city name from input
   let input = document.getElementById("input-text").value;
   // if city name is empty handle that
+  storeInLS("recentSearch", input);
   if (input) {
     renderCurrentWeatherData(input);
+    renderCities();
   }
   // else render weather data
   else {
     alert("input valid search");
   }
 };
+const handleRecentSearch = (event) => {
+  event.preventDefault();
+  const container = document.getElementById("all-weather");
+  container.remove();
+  const main = document.getElementById("main");
+  $("main").append(`   <section id="all-weather"class="all-weather">
+  <div id="current-weather" class="current-weather">
+  
+  
+  
+</div>
+<h1>5 day weather forecast</h1>
+<div id="forecast-container" class="forecast-container" >
+  
+        
+ 
+
+ 
+</div>
+</section>`);
+  event.preventDefault();
+  const target = $(event.target);
+  // get the city name from inpu
+
+  // if city name is empty handle that
+  if (target.is("a")) {
+    const input = $(target).attr("data-value");
+    renderCurrentWeatherData(input);
+  }
+};
+const storeInLS = (key, value) => {
+  //get feedbackResults from LS
+  const arrayFromLS = JSON.parse(localStorage.getItem(key));
+
+  //push answer in to array
+  arrayFromLS.push(value);
+
+  //set feedbackResults in LS
+  localStorage.setItem(key, JSON.stringify(arrayFromLS));
+};
+const initialiseLocalStorage = () => {
+  const recentSearch = JSON.parse(localStorage.getItem("recentSearch"));
+  if (!recentSearch) {
+    localStorage.setItem("recentSearch", JSON.stringify([]));
+  }
+};
 form.addEventListener("submit", handleFormSubmit);
 const onReady = () => {
-  // render recent cities
+  initialiseLocalStorage();
+  renderCities();
 };
 
 $(document).ready(onReady);
